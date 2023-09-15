@@ -56,12 +56,12 @@ function Login() {
                 />
              </div>
 
-             <button type="submit" className="btn btn-success w-100 rounded-0">
+             <button type="submit" className="btn btn-success  rounded-0">
                 Login
              </button>
              </form>
              <p>Already Have an Account</p>
-             <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
+             <Link to="/register" className="btn btn-default border  bg-light rounded-0 text-decoration-none">
                 signup
              </Link>  
           </div>

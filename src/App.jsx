@@ -1,8 +1,8 @@
-import Login from '../src/components/Login'
-import Signup from '../src/components/signup'
+import Login from './components/Login'
+import Signup from './components/signup'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Dashboard from '../src/components/Dashboard'
-import Homepage from '../src/components/Homepage'
+import Dashboard from './components/Dashboard'
+import Homepage from './components/Homepage'
 
 function App() {
   
@@ -18,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

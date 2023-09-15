@@ -55,7 +55,7 @@ function Login() {
                 />
              </div>
 
-             <button type="submit" className="btn btn-success  rounded-0">
+             <button type="submit" className="btn btn-primary  rounded-0">
                 Login
              </button>
              </form>

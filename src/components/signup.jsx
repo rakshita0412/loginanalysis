@@ -24,14 +24,14 @@ function Signup() {
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
            <div className="mb-3">
-               <label htmlFor="email">
+               <label htmlFor="name">
                   <strong>Name</strong>
                 </label>
                 <input
                   type="text"
                   placeholder="Enter Name"
                   autoComplete="off"
-                  name="email"
+                  name="name"
                   className="form-control rounded-0"
                   onChange={(e) =>  setName(e.target.value)}
                 />
@@ -62,7 +62,7 @@ function Signup() {
                 />
              </div>
 
-             <button type="submit" className="btn btn-success w-100 rounded-0">
+             <button type="submit" className="btn btn-primary w-100 rounded-0">
                 Register
              </button>
              </form>

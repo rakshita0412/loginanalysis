@@ -1,5 +1,6 @@
 
-import { useEffect, useState } from "react";
+
+import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -7,6 +8,7 @@ function Dashboard() {
     const [suc, setSuc ] = useState()
     const navigate = useNavigate()
     axios.defaults.withCredentials = true;
+    
     useEffect(() => {
         axios.get('http://localhost:3001/dashboard')
         .then(res => {
@@ -17,7 +19,8 @@ function Dashboard() {
                  navigate('/')
             }
         }).catch(err=> console.log(err))
-    }, [])
+    }, [navigate]);
+
     return (
         <div>
         <h2>dashboard</h2>

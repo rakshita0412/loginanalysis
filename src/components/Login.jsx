@@ -13,7 +13,7 @@ function Login() {
         e.preventDefault()
         axios.post('http://localhost:3001/login', {email, password})
         .then(res => {
-          navigate('/dashboard')
+          navigate('/')
       }).catch(err=> console.log(err))
     }
   return(

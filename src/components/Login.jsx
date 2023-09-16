@@ -13,17 +13,9 @@ function Login() {
         e.preventDefault()
         axios.post('http://localhost:3001/login', {email, password})
         .then(res => {
-            console.log("login: " + res.data);
-            if(res.data.status === "Success") {
-                if(res.data.role === "admin") {
-                    navigate('/dashboard')
-                } else {
-                    navigate('/')
-                }
-            }
-        }).catch(err=> console.log(err))
+          navigate('/dashboard')
+      }).catch(err=> console.log(err))
     }
-
   return(
     <div className="d-flex  justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-1/2">
@@ -61,7 +53,7 @@ function Login() {
              </form>
              <p>Already Have an Account</p>
              <Link to="/register" className="btn btn-default border  bg-light rounded-0 text-decoration-none">
-                signup
+                Signup
              </Link>  
           </div>
         </div>

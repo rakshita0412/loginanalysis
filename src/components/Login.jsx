@@ -11,7 +11,8 @@ function Login() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/login', {email, password})
+        axios.post('https://server-sb2a.onrender.com', {email, password})
+        //axios.post('http://localhost:3001/login', {email, password})
         .then(res => {
           navigate('/')
       }).catch(err=> console.log(err))

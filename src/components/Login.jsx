@@ -11,10 +11,20 @@ function Login() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://server-sb2a.onrender.com', {email, password})
-        //axios.post('http://localhost:3001/login', {email, password})
+        // axios.post('https://server-sb2a.onrender.com', {email, password})
+        axios.post('http://localhost:3001/login', {email, password})
         .then(res => {
-          navigate('/')
+          // navigate('/dashboard')
+          console.warn(res.data);
+          if (res.data.Status === "Success"){
+            console.warn("Login Success");
+            navigate('/dashboard');
+            localStorage.setItem("email", email);
+          }
+          else{
+            console.warn("Password is incorrect or mail not found");
+            alert("Password is incorrect or mail not found");
+          }
       }).catch(err=> console.log(err))
     }
   return(

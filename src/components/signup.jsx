@@ -12,8 +12,8 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://server-sb2a.onrender.com', {name, email, password})
-        //  axiox.post('http://localhost:3001/register', {name, email, password}))
+        //axios.post('https://server-sb2a.onrender.com', {name, email, password})
+          axios.post('http://localhost:3001/register', {name, email, password})
         .then(res => {
             navigate('/login')
         }).catch(err=> console.log(err))

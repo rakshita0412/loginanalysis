@@ -42,8 +42,8 @@ function Login() {
               email,
               loginTime : ""+date.getHours()+" "+date.getMinutes(),
               loginDate : date.getDate()+" "+date.getMonth()+" "+date.getFullYear(),
-              loginCount:1,
-              perDayLoginCount:1,
+              loginCount: 1,
+              perDayLoginCount: 1,
              // IPaddress: ,
 
             }

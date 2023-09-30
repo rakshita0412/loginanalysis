@@ -1,7 +1,10 @@
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import{ Link, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
+import Navbar from "./Navbar";
+
+
 
 function Signup() {
     const [name, setName] = useState()
@@ -13,19 +16,39 @@ function Signup() {
     const handleSubmit = (e) => {
         e.preventDefault()
         //axios.post('https://server-sb2a.onrender.com', {name, email, password})
-          axios.post('http://localhost:3001/register', {name, email, password})
+          axios.post('http://localhost:3002/register', {name, email, password})
         .then(res => {
-            navigate('/login')
+          if(res.data.status==="Success"){
+            navigate('/')}
+            else{
+              alert("Something Wrong");
+            }
         }).catch(err=> console.log(err))
     }
 
-  return(
+
+
+    const alreadymail = localStorage.getItem("email");
+
+    useEffect(() => {
+      // Check if email is not present in local storage, then redirect to login page
+      if (alreadymail) {
+          navigate('/dashboard');
+      }
+  }, [email]);
+
+
+
+
+
+  return(<>
+    <Navbar/>
     <div className="d-flex  justify-content-center align-items-center bg-secondary vh-100">
       <div className="bg-white p-3 rounded w-1/2">
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
            <div className="mb-3">
-               <label htmlFor="name">
+               <label htmlform="name">
                   <strong>Name</strong>
                 </label>
                 <input
@@ -38,7 +61,7 @@ function Signup() {
                 />
              </div> 
              <div className="mb-3">
-               <label htmlForm="email">
+               <label htmlform="email">
                  <strong>Email</strong>
                 </label>
                 <input
@@ -51,7 +74,7 @@ function Signup() {
                 />
              </div>
              <div className="mb-3">
-                <label htmlForm="email">
+                <label htmlform="email">
                   <strong>Password</strong>
                 </label>
                 <input
@@ -68,12 +91,13 @@ function Signup() {
              </button>
              </form>
              <p>Already Have an Account</p>
-             <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
+             <Link to="/" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
                 Login
              </Link> 
               
           </div>
         </div>
+        </>
        );
     }
     export default Signup;                   

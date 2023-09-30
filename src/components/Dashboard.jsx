@@ -1,14 +1,14 @@
-
-
 import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import Navbar from "./Navbar";
 
 function Dashboard() {
-    const [suc, setSuc ] = useState()
+    //const [suc, setSuc ] = useState()
     const navigate = useNavigate()
-    axios.defaults.withCredentials = true;
-    const email = localStorage.getItem("email");
+    //axios.defaults.withCredentials = true;
+    const admin = localStorage.getItem("admin");
+
     
     // useEffect(() => {
     //     axios.get('http://localhost:3001/dashboard')
@@ -24,18 +24,35 @@ function Dashboard() {
 
     const [allUsers, setAllUsers] = useState([]);
 
-useEffect(() => {
-   console.warn(email); 
-  axios.post('http://localhost:3001/getUserData',{email})
-    .then((response) => {
-      console.warn(response.data);
-      setAllUsers(response.data);
-    })
-    .catch((err) => console.log(err));
-}, []);
+
+
+    useEffect(() => {
+      // Check if email is not present in local storage, then redirect to login page
+      if (admin!="available") {
+          navigate('/');
+      }
+  }, [admin]);
+
+
+
+
+
+
+// useEffect(() => {
+//    console.warn(email); 
+//   axios.post('http://localhost:3002/getUserData',{ email })
+//     .then((response) => {
+//       console.warn(response.data);
+//       setAllUsers(response.data);
+//     })
+//     .catch((err) => console.log(err));
+// }, []);
+
+
 
   
-    return(
+    return(<>
+      <Navbar/>
       <div className = "w-100 vh-100 d-flex justify-content-center align-items-center">
         <div className="w-50"> 
         <table className="table">
@@ -53,19 +70,20 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-            {/* {
-              allusers.map(user => {
-                <tr>
+            {
+              allUsers.map(user => {
+              return <tr>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.password}</td>
                 </tr>
               })
-            } */}
+            }
           </tbody>
         </table>
         </div>
       </div>
+      </>
     );
 }
 

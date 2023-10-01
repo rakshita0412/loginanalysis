@@ -14,11 +14,82 @@ function Login() {
     const alreadymail = localStorage.getItem("email");
 
     useEffect(() => {
+    // getIpP();
+
       // Check if email is not present in local storage, then redirect to login page
       if (alreadymail) {
           navigate('/dashboard');
       }
   }, [email]);
+
+
+
+
+
+  //const [IPaddress, setIPaddress] = useState('');
+
+//   useEffect(() => {
+//     const getIP = async()=>{
+//     const response = await axios.get('https://api.ipify.org?format=json')
+//     console.warn(response.data);
+//       }
+//       getIP();
+//  }, []);
+
+
+// const [ipAddress, setIpAddress] = useState('');
+// const [location, setlocation] = useState('');
+
+
+
+
+useEffect(() => {
+  const getapi= async()=>{
+    console.warn("ip calling")
+      const response = await axios.post('http://localhost:3002/getapi',{})
+     console.warn(response.data);
+          }
+           getapi();
+ }, []);
+
+
+//  const getIP = async () => {
+//   console.warn("ip")
+//   try {
+//     const response = await axios.post('http://localhost:3002/getIP', { lat, long });
+//     console.log('Client IP:', response.data.clientIP);
+//     console.log('Weather Data:', response.data.weatherData);
+//   } catch (error) {
+//     console.error('Error fetching IP and data:', error);
+//   }
+//   getIP();
+// }; 
+
+
+const [lat, setlat] = useState();
+const [long, setlong] = useState();
+useEffect( ()=> {
+  navigator.geolocation.getCurrentPosition((position) => {
+    console.warn(position.coords)
+    setlat(position.coords.latitude)
+    setlong(position.coords.longitude)
+    console.warn(lat, long)
+
+  })
+  let api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=7941b963778ae46b3456cfff136e78b3`
+  console.warn(api)
+  
+  
+  const getapi= async()=>{
+    console.warn("ip calling")
+      const response = await axios.post('http://localhost:3002/getapi',{api})
+     console.warn(response.data);
+          }
+        getapi()
+
+});
+
+
 
 
 
@@ -37,13 +108,15 @@ function Login() {
             navigate('/homepage');
             localStorage.setItem("email", email);
             const date = new Date();
-            console.warn(date.getUTCDate(), date.getTime());
+            console.warn(date.getDate(), date.getTime());
+            //console.warn(ipAddress, location)
+            
             const data = {
               email,
               loginTime : ""+date.getHours()+" "+date.getMinutes(),
-              loginDate : date.getDate()+" "+date.getMonth()+" "+date.getFullYear(),
-              loginCount: 1,
-              perDayLoginCount: 1,
+              loginDate : date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear(),
+             // ipAddress: ipAddress,
+              //location: location,
              // IPaddress: ,
 
             }
@@ -56,7 +129,8 @@ function Login() {
             console.warn("Password is incorrect or mail not found");
             alert("Password is incorrect or mail not found");
           }
-      }).catch(err=> console.log(err))
+      })
+      .catch(err=> console.log(err))
     }
 
 
@@ -105,7 +179,7 @@ function Login() {
         </div>
         </>
        );
-    }
+  }
     
 export default Login;  
 // import React from 'react'

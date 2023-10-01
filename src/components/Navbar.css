@@ -1,0 +1,32 @@
+/* Navbar.css */
+.navbar {
+    background-color: #3498db; /* Replace with your desired background color */
+    color:rgb(14, 14, 14); /* Set text color */
+    padding: 10px 0; /* Add padding as needed */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    font-weight: bold; /* Add font weight as needed */
+  }
+  
+  .navbar-item {
+    margin-right: 10px; /* Add margin as needed between navbar items */
+  }
+  
+  /* Style the buttons */
+  .btn {
+    background-color: #e74c3c; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Add padding as needed */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    text-decoration: none; /* Remove underlines from links */
+    cursor: pointer; /* Add pointer cursor for buttons */
+  }
+  
+  /* Style the buttons on hover */
+  .btn:hover {
+    background-color: #c0392b; /* Change the background color on hover */
+  }
+  

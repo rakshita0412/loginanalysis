@@ -149,7 +149,7 @@ useEffect(() => {
                 <input
                   type="email"
                   placeholder="Enter Email"
-                  autoComplete="off"
+                  autoComplete="on"
                   name="email"
                   className="form-control rounded-0"
                   onChange={(e) =>  setEmail(e.target.value)}

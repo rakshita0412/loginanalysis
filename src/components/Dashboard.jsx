@@ -2,27 +2,16 @@ import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import Navbar from "./Navbar";
+import Dynamictable from "./Dynamictable"; 
 
 function Dashboard() {
     //const [suc, setSuc ] = useState()
     const navigate = useNavigate()
     //axios.defaults.withCredentials = true;
     const admin = localStorage.getItem("admin");
-
     
-    // useEffect(() => {
-    //     axios.get('http://localhost:3001/dashboard')
-    //     .then(res => {
-    //         console.log("dashboard: " + res.data);
-    //         if(res.data === "Success") {
-    //              setSuc("Successed OK")
-    //         } else {
-    //              navigate('/')
-    //         }
-    //     }).catch(err=> console.log(err))
-    // }, [navigate]);
-
-    const [allUsers, setAllUsers] = useState([]);
+    const [email, setEmail] = useState('');
+    
 
 
 
@@ -34,57 +23,51 @@ function Dashboard() {
   }, [admin]);
 
 
+ 
+  const [userData, setUserData] = useState()
 
-
-
-
-// useEffect(() => {
-//    console.warn(email); 
-//   axios.post('http://localhost:3002/getUserData',{ email })
-//     .then((response) => {
-//       console.warn(response.data);
-//       setAllUsers(response.data);
-//     })
-//     .catch((err) => console.log(err));
-// }, []);
-
-
+   const handleEmailChange = async(e) => {
+             e.preventDefault()
+     try {
+          const response = await axios.post('http://localhost:3002/getUserData',{email})
+          console.warn(response.data);
+          console.warn(response.data.success);
+          if (response.data.success) {
+            const formattedUserData = response.data.userData;
+            console.log('Formatted User Data:', formattedUserData);
+             setUserData(formattedUserData);
+          } else {
+            console.error('Error fetching user data:', response.data.error);
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        }
+   };
 
   
-    return(<>
-      <Navbar/>
-      <div className = "w-100 vh-100 d-flex justify-content-center align-items-center">
-        <div className="w-50"> 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Email
-              </th>
-              <th>
-                Password
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              allUsers.map(user => {
-              return <tr>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.password}</td>
-                </tr>
-              })
-            }
-          </tbody>
-        </table>
+
+  return (
+    <>
+        <Navbar />
+        <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
+            <div className="w-50">
+            <input
+             type="email"
+             placeholder="Enter Email"
+             value={email}
+             onChange={(e) => setEmail(e.target.value)}
+            />
+            <button onClick={handleEmailChange}>Fetch</button>
+
+                {/* Render the DynamicTable component */}
+                <Dynamictable data = {userData} email = {email}  />
+               </div>
         </div>
-      </div>
-      </>
-    );
+    </>
+);
 }
+
+
+
 
 export default Dashboard;

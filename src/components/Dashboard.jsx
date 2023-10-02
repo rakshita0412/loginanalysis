@@ -4,6 +4,7 @@ import axios from 'axios'
 import Navbar from "./Navbar";
 import Dynamictable from "./Dynamictable"; 
 
+
 function Dashboard() {
     //const [suc, setSuc ] = useState()
     const navigate = useNavigate()

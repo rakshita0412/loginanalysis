@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Dynamictable.css";
+
 
 function Dynamictable({data, email}) {
     const [formattedUserData, setFormattedUserData] = useState(data);
@@ -8,13 +10,12 @@ function Dynamictable({data, email}) {
 
   console.warn("data", data)
   return (
-    
-    <div>
+    <div className="table-container">
       {/* Input field to enter email */}
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table>
+        <table className="custom-table">
           <thead>
             <tr>
               <th>Email</th>

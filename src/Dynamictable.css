@@ -1,0 +1,22 @@
+/* Dynamictable.css */
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid black; /* Set the borders to black */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table-container {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    max-width: 800px;
+    background-color: #f0f0f0;
+  }
+    

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Dynamictable.css";
-
-
+import "./dynamic.css"
 function Dynamictable({data, email}) {
     const [formattedUserData, setFormattedUserData] = useState(data);
   const [loading, setLoading] = useState(false);

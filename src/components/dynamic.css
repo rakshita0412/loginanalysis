@@ -1,0 +1,31 @@
+/* Dynamictable.css */
+
+/* Style the table container */
+.table-container {
+    border: 2px solid black; /* Black border for the container */
+    /* width:100%; */
+    padding: 20px; /* Add padding for spacing */
+    text-align: center; /* Center-align the content inside the container */
+  }
+  
+  /* Style the table */
+  .custom-table {
+    border-collapse: collapse; /* Remove default spacing between table cells */
+    width: 100%;
+     /* Make the table fill its container */
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 2px solid black; /* Black border for table cells */
+    padding: 8px; /* Add padding for spacing inside cells */
+    /* width:100%; */
+  }
+  
+  /* Style table header cells */
+  .custom-table th {
+    background-color: #f2f2f2; /* Light gray background for header cells */
+  }
+  
+  /* Add any additional styles as needed */
+  

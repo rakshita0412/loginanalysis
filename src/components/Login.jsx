@@ -114,7 +114,7 @@ useEffect(() => {
             
             const data = {
               email,
-              loginTime : ""+date.getHours()+" "+date.getMinutes(),
+              loginTime : ""+date.getHours()+" : "+date.getMinutes(),
               loginDate : date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear(),
               location : location
               // ipAddress: locationData.ip, 

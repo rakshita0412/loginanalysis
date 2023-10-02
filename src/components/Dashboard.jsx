@@ -2,6 +2,7 @@ import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import Navbar from "./Navbar";
+
 import Dynamictable from "./Dynamictable"; 
 
 
@@ -51,14 +52,14 @@ function Dashboard() {
     <>
         <Navbar />
         <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
-            <div className="w-50">
+            <div className="">
             <input
              type="email"
              placeholder="Enter Email"
              value={email}
              onChange={(e) => setEmail(e.target.value)}
             />
-            <button onClick={handleEmailChange}>Fetch</button>
+            <button onClick={handleEmailChange}> Search </button>
 
                 {/* Render the DynamicTable component */}
                 <Dynamictable data = {userData} email = {email}  />

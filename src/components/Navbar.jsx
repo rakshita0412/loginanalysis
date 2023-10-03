@@ -19,7 +19,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
-          <span className="navbar-item">Company Name</span>
+          <span className="navbar-item"> RPR Tech</span>
         </div>
         <div className="navbar-end">
           <div className="navbar-item">

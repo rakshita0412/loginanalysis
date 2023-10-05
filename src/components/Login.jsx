@@ -77,20 +77,6 @@ useEffect(() => {
 }, []); 
 
 
-// useEffect(() => {
-
-//   const serverUrl = "http://localhost:3002/trackClicks"; 
-
-//   const data = { clickCount };
-
-//   axios.post(serverUrl, data)
-//     .then((response) => {
-//       console.log("Click count sent to server successfully.");
-//     })
-//     .catch((error) => {
-//       console.error("Error sending click count to server:", error);
-//     });
-// }, [clickCount]); 
 
 
 
